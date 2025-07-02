@@ -1,0 +1,22 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="viscli",
+    version="1.0.0",
+    description="A versatile CLI tool for visualization, time tracking, and anime break mode",
+    author="Your Name",  # Optional but nice
+    packages=find_packages(),
+    include_package_data=True,
+    install_requires=[
+        "typer[all]>=0.9.0",
+        "rich>=13.0.0",
+        "plotext>=5.0.0",
+        "requests>=2.28.0",
+    ],
+    entry_points={
+        "console_scripts": [
+            "viscli=cli:app",
+        ],
+    },
+    python_requires=">=3.9",
+)

@@ -1,0 +1,25 @@
+import pandas as pd
+import ace_tools as tools
+
+# regenerate sample data
+data = {
+    "Category": ["Apples", "Oranges", "Bananas", "Grapes", "Mangoes"],
+    "Value": [10, 7, 13, 5, 12]
+}
+df = pd.DataFrame(data)
+path_small = "/mnt/data/data.csv"
+df.to_csv(path_small, index=False)
+
+# regenerate big data
+big_data = {
+    "Category": [f"Item_{i:02d}" for i in range(1, 51)],
+    "Value": [i * 3 % 137 + 5 for i in range(1, 51)]  # deterministic values
+}
+big_df = pd.DataFrame(big_data)
+path_big = "/mnt/data/big_data.csv"
+big_df.to_csv(path_big, index=False)
+
+# Display first 10 rows of big data
+tools.display_dataframe_to_user("Big CSV Sample (first 10 rows)", big_df.head(10))
+
+(path_small, path_big)
